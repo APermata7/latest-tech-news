@@ -1,98 +1,35 @@
--- phpMyAdmin SQL Dump
--- version 5.2.0
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Waktu pembuatan: 28 Feb 2023 pada 12.46
--- Versi server: 10.4.27-MariaDB
--- Versi PHP: 8.2.0
+CREATE DATABASE IF NOT EXISTS sqli;
+USE sqli;
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
+CREATE TABLE article (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(255),
+  text TEXT
+);
 
+INSERT INTO article (title, text) VALUES
+('Major Data Breach in Tech Industry', 'Millions of records leaked due to misconfiguration. Administrators are investigating the issue.'),
+('AI Security Risks in 2025', 'Experts warn about insecure AI pipelines. Always validate your inputs and use secure coding practices.'),
+('Hidden Security Message', 'Database contains important information. Look for hidden data in the system.'),
+('Web Security Fundamentals', 'Learn about SQL injection, XSS, CSRF and other OWASP Top 10 vulnerabilities.');
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+CREATE TABLE user (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(50),
+  password VARCHAR(50),
+  flag VARCHAR(255)
+);
 
---
--- Database: `sqli-lab`
---
+INSERT INTO user (username, password, flag)
+VALUES ('adminflag', 'PrakKI2023FilkomUB', 'Flag{YES_KAMU_BERHASIL_latest_tech_news}');
 
--- --------------------------------------------------------
+CREATE TABLE IF NOT EXISTS hidden_flags (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    flag_name VARCHAR(100),
+    flag_value VARCHAR(255)
+);
 
---
--- Struktur dari tabel `article`
---
-
-CREATE TABLE `article` (
-  `id` int(11) NOT NULL,
-  `title` varchar(1500) NOT NULL,
-  `text` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data untuk tabel `article`
---
-
-INSERT INTO `article` (`id`, `title`, `text`) VALUES
-(1, 'Diretas Hacker, Data Alumni Universitas Brawijaya Bocor ke Internet', 'Universitas Brawijaya (UB) buka suara soal peretasan data pribadi alumni mahasiswanya. Pihak UB telah melakukan investigasi dan membenarkan adanya peretasan data alumni mahasiswa UB.\r\nSource : Okezone.com'),
-(2, 'Indonesia kekurangan Bakat Cyber Security', 'Indonesia kekurangan bakat cyber security dan itu menimbulkan masalah yang sangat nyata dalam industri strategis, pertahanan, kesatuan bangsa dan bisnis. Bayangkan bila terjadi perang cyber istilah beberapa tentara Cyber Indonesia yang dapat membela dan memperkuat pertahanan bangsa.\r\nSource : kominfo.go.id');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `user`
---
-
-CREATE TABLE `user` (
-  `id` int(11) NOT NULL,
-  `username` varchar(60) NOT NULL,
-  `password` varchar(60) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data untuk tabel `user`
---
-
-INSERT INTO `user` (`id`, `username`, `password`) VALUES
-(1, 'adminflag', 'PrakKI2023FilkomUB');
-
---
--- Indexes for dumped tables
---
-
---
--- Indeks untuk tabel `article`
---
-ALTER TABLE `article`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indeks untuk tabel `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT untuk tabel yang dibuang
---
-
---
--- AUTO_INCREMENT untuk tabel `article`
---
-ALTER TABLE `article`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT untuk tabel `user`
---
-ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+INSERT INTO hidden_flags (flag_name, flag_value) VALUES
+('flag1', 'Flag{SQLi_Master_2023}'),
+('flag2', 'Flag{Union_Injection_Success}'),
+('flag3', 'Flag{Database_Extracted}');
